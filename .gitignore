@@ -1,0 +1,22 @@
+# Secrets et clés (ne JAMAIS commiter)
+.env
+*.pem
+*.key
+id_rsa*
+secrets.yaml
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+crash.log
+
+# Éditeurs / système
+.vscode/
+.idea/
+.DS_Store
+
+# Python / Node (pour l'app de démo plus tard)
+__pycache__/
+node_modules/
