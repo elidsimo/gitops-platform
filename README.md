@@ -26,3 +26,4 @@ Projet de démonstration d'une chaîne de livraison moderne, automatisée et sé
 - [x] Phase 1 : initialisation du projet et du cluster local
 - [x] Phase 2 : ArgoCD et pattern app of apps
 - [x] Phase 3 : pipeline DevSecOps, partie 1 (Gitleaks + Trivy)
+- [x] Phase 4 : durcissement Kubernetes (securityContext) et Trivy bloquant
