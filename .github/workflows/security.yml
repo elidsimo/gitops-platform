@@ -1,0 +1,36 @@
+name: security-scan
+
+on:
+  push:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  gitleaks:
+    name: Gitleaks (détection de secrets)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le code avec tout l'historique
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Lancer Gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  trivy-config:
+    name: Trivy (mauvaises configurations)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Scanner les fichiers Kubernetes avec Trivy
+        run: |
+          docker run --rm -v "${{ github.workspace }}:/work" aquasec/trivy:latest \
+            config --severity HIGH,CRITICAL --exit-code 0 /work
