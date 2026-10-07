@@ -27,3 +27,4 @@ Projet de démonstration d'une chaîne de livraison moderne, automatisée et sé
 - [x] Phase 2 : ArgoCD et pattern app of apps
 - [x] Phase 3 : pipeline DevSecOps, partie 1 (Gitleaks + Trivy)
 - [x] Phase 4 : durcissement Kubernetes (securityContext) et Trivy bloquant
+- [x] Phase 5 : application hello-api (Flask), tests, Dockerfile sécurisé, scan d'image
