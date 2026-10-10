@@ -1,0 +1,29 @@
+name: iac-scan
+
+on:
+  push:
+    paths:
+      - "infra/terraform/**"
+      - ".github/workflows/iac-scan.yml"
+  pull_request:
+    paths:
+      - "infra/terraform/**"
+      - ".github/workflows/iac-scan.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  checkov:
+    name: Checkov (Terraform)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Scanner le Terraform avec Checkov
+        run: |
+          docker run --rm \
+            -v "${{ github.workspace }}/infra/terraform:/tf" \
+            bridgecrew/checkov:latest \
+            -d /tf --framework terraform --compact
