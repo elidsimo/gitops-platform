@@ -29,3 +29,4 @@ Projet de démonstration d'une chaîne de livraison moderne, automatisée et sé
 - [x] Phase 4 : durcissement Kubernetes (securityContext) et Trivy bloquant
 - [x] Phase 5 : application hello-api (Flask), tests, Dockerfile sécurisé, scan d'image
 - [x] Phase 6 : pipeline CI (tests, build, scan Trivy, publication GHCR)
+- [x] Phase 7 : déploiement de hello-api par ArgoCD (probes, securityContext), retrait de hello-nginx
