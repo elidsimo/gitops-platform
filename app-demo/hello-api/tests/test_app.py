@@ -16,3 +16,13 @@ def test_home_contient_un_message():
     assert "message" in donnees
     assert "pod" in donnees
     assert "version" in donnees
+
+
+def test_metrics_expose_les_compteurs():
+    client = app.test_client()
+    client.get("/")
+    reponse = client.get("/metrics")
+    assert reponse.status_code == 200
+    texte = reponse.get_data(as_text=True)
+    assert "http_requests_total" in texte
+    assert "http_request_duration_seconds" in texte
