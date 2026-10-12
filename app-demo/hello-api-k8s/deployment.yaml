@@ -31,13 +31,13 @@ spec:
               app: hello-api
       containers:
         - name: hello-api
-          image: ghcr.io/elidsimo/hello-api:a8a7350
+          image: ghcr.io/elidsimo/hello-api:768c2df
           ports:
             - name: http
               containerPort: 8080
           env:
             - name: APP_VERSION
-              value: "a8a7350"
+              value: "768c2df"
           securityContext:
             allowPrivilegeEscalation: false
             readOnlyRootFilesystem: true
