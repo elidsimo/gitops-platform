@@ -1,6 +1,21 @@
+data "aws_caller_identity" "current" {}
+
 resource "aws_kms_key" "artifacts" {
   description         = "Chiffrement du bucket d'artefacts"
   enable_key_rotation = true
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Sid       = "AdministrationParLeCompte"
+        Effect    = "Allow"
+        Principal = { AWS = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:root" }
+        Action    = "kms:*"
+        Resource  = "*"
+      }
+    ]
+  })
 }
 
 resource "aws_s3_bucket" "artifacts" {
